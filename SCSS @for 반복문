@@ -1,0 +1,32 @@
+SCSS For 문
+
+CSS에서 이렇게 한다면....
+.list li.ico1{ background:url(/images/ico01.png) center top no-repeat}
+.list li.ico2{ background:url(/images/ico02.png) center top no-repeat}
+
+SCSS에서는 for문을 사용하여 사용 할 수 있다.
+
+//to는 끝숫자 전까지,
+@for $i from 1 to 5 {
+.list li.ico#{$i} {color:red; }
+}
+
+상기와 같이 한다면...
+css에서는
+.list li.ico1{color:red;}
+.list li.ico2{color:red;}
+.list li.ico3{color:red;}
+.list li.ico4{color:red;} 로 확인해 볼 수 있음 
+
+
+.list li{background:no-repeat 0 0 / 20px auto; text-index:30px;} 
+@for $i from 1 to 5 {
+.list li.ico#{$i} {background:url(ico#{$i}.png) }
+.list li:nth-child(#{$i}):before{content:"제목#{$i}";} 
+}
+
+css에서는
+.list li.ico1{background:url(ico1.png); }
+.list li.ico2{background:url(ico2.png); }
+.list li.ico3{background:url(ico3.png); }
+.list li.ico4{background:url(ico4.png); } 로 확인해 볼 수 있음
