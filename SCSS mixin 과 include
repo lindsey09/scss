@@ -1,0 +1,41 @@
+@mixin , @include
+
+CSS로 생각해보면.....
+@mixin = @kyeframe ani{}
+@include = animiation-name:ani 로 생각해 볼 수 있다.
+
+
+@mixin test{
+  width:100px; height:100px; border:1px solid red;
+}
+.box{
+  @include text();
+}
+
+@mixin clear{
+  &::after{content:""; display:block; claer:both;
+}
+.box{
+  @include clear();
+}
+
+상기와 같이 사용할 수 있다. 상기처럼 사용할 경우 변수명 다음 괄호는 생략해도 무관하다.
+
+@mixin border($color){
+  border:1px solid $color;
+}
+.box{
+  @include border(red);
+}
+
+@mixin border($wid, $color){
+  border:$wid solid $color
+}
+.box{
+ @include border(2px, red);
+}
+
+변수 선언 시 괄호안에 값을 설정하여, include 로 넣을 떄 변수 괄호안에 해당 설정값을 적용해 준다.
+
+
+
