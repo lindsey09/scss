@@ -1,0 +1,45 @@
+---------SCSS 변수------------
+SCSS 변수는 $로 시작한다.
+변수명을 설정할 때는 영문+숫자 , 영문+특수문자 (-,_)+숫자, 대소문자
+
+$gray:#999;
+$white:#fff;
+
+상기와 같이 변수 설정 할 경우, 필요할 때 변수값을 넣어서 사용할 수 있다.
+.box{color:$gray; background:$white;}
+
+** 색상적용을 한번에 처리할 때 편리하다 
+
+---------SCSS 선택자---------
+ul{
+  border:1px solid red;
+  > li{
+    background:pink;
+     a{ 
+     text-decoration:none;
+       &hover{
+        color:red;
+       }
+       &.bbb{color:#bbb;}  / 1
+     }
+     .bbb{color:#bbb;} / 2
+     &:last-child{border-bottom:2px solid #000}
+  }
+ 
+}
+1/2번 두가지 방법으로 scss를 설정할 수 있다.
+
+
+상기와 같이 코딩 할 경우,
+css에서는 
+ul{border:1px soild red;}
+ul li{background:pink;}
+ul li a{text-decoration:none;}
+ul li a.bbb{color:#bbb;}
+ul li a:hover{color:red;} 
+ul li:last-child{border-bottom:2px solid #000;}처럼 나타 낼 수 있다. 
+
+
+
+
+
