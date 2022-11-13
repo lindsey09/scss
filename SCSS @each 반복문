@@ -1,0 +1,41 @@
+SCSS @each 
+
+여러개의 변수값을 순서대로 대입시켜 사용하는 EACH문
+
+<h1 class="ico_boox"></h1>
+<h1 class="ico_zoom"></h1>
+<h1 class="ico_phone"></h1>
+
+in이 들어가게 되면 하나씩 차례대로 변수에 대입을 시켜줄 수 있음.
+@each $var in book, zoom, phone{
+  .ico_#{$var}{
+    background:url(/images/#{$var}.gif) no-repeat;
+  }
+}
+css에서 확인해보면
+.ico_book{background:url(/images/book.gif); }
+.ico_zoom{background:url(/images/zoom.gif); }
+.ico_phone{background:url(/images/phone.gif); }
+
+$heading: (
+h1:30px,
+h2:20px,
+h3:15px;
+)
+
+@each로 하면 $heading 변수의 값이 $element, $fontsize에 하나씩 차례대로 대입이 됨.
+추후 font-size를 변경하게 될 경우, $heading 변수의 font-size 값만 수정하게 되어 편리한 코딩이 됨.
+
+@each $element, $fontsize in $heading{
+  #{$element}{
+  font-size:$fontsize;
+  }
+}
+
+css에서 확인해보면
+h1{font-size:30px;}
+h2{font-size:20px;}
+h3{font-size:15px;}
+
+
+
