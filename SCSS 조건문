@@ -1,0 +1,41 @@
+SCSS 조건문
+
+@mixin btn_radius($h, $radius:true){
+    padding:0 20px; height:$h; line-height:$h; 
+    text-align:center; background:red; color:#fff;
+    @if $radius {
+        border-radius: $h / 2;
+    }@else{
+        border:2px solid #555;
+    }
+}
+
+.btn{
+    @include btn_radius(30px, false);
+}
+
+해당하는 값에 $h값 $radius가 true이면 ~~~ false이면 @else아래 구문을 실행하라
+
+
+조건문 안에 조건문 형식으로 
+
+position으로 x,y,z 값을 주고 left, top 값에 대입시킨다.
+
+@mixin position($x, $y, $z){
+    position:absolute; left:$x; top:$y; z-index:$z;
+    @if $x == 50% and $y == 50%{ x,y가 50%일 경우에는 translate를 둘 다 -50%으로 설정해준다.
+        transform: translate(-50%, -50%);
+    }@else if $x == 50%{  x만 50%인 경우에는 translateX만 50%으로 설정해준다.
+        transform: translateX(-50%);
+    }@else if $y == 50%{  y만 50%인 경우에는 translateY만 50%으로 설정해준다.
+        transform: translateY(-50%);
+    }
+
+}
+
+div{
+    width:300px;
+    height:300px;
+    background:#000;
+    @include position(50%, 50%, 1);
+}
