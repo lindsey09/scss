@@ -1,0 +1,36 @@
+mixin 응용
+
+clear로 사용 할 경우.
+
+@mixin clear{
+    &:after{content: ""; display:block; clear:both;}
+}
+
+.a{@include clear; border:1px solid black; background:red;
+    div{
+        float:left;   
+    }
+}
+
+한줄짜리 말줄임표 만들경우
+@mixin ellipsis($w){
+    overflow: hidden; display:block; text-overflow: ellipsis; white-space: nowrap; width:$w;
+}
+
+.a{ @include ellipsis(100px);}
+
+모바일일 경우 몇줄만 나오고 말줄임표 나오게 만듬.
+
+@mixin ellipsis2($line, $w, $h){
+    overflow:hidden; display:-webkit-box; -webkit-line-clamp:$line; width:$w; height:$h; -webkit-box-orient: vertical; text-overflow:ellipsis;
+}
+line-clamp :  몇 줄 뒤에 콘텐츠를 자를지 (ie지원안됨)
+box-orient :  박스의 흐름 방향을 지정 (ie지원안됨)
+display가 -webkit-box 로 설정해야하고, box-orient 가 vertical 값이 되야만 line-clamp가 실행된다
+
+.b{@include ellipsis2(3, 200px, 66px)}
+
+프로젝트에서는 mixin 자체 파일을 하나로 만들어두고, scss와 연결시켜서 두개 서로 상호호환되어 사용할 수 있도록 작업하게된다.
+
+
+
